@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter10CSharpLearningStructs", "Chapter10CSharpLearningStructs\Chapter10CSharpLearningStructs.csproj", "{CDCDDC39-3FCE-4C07-AC82-DD8FE28AFAC7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDCDDC39-3FCE-4C07-AC82-DD8FE28AFAC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCDDC39-3FCE-4C07-AC82-DD8FE28AFAC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCDDC39-3FCE-4C07-AC82-DD8FE28AFAC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCDDC39-3FCE-4C07-AC82-DD8FE28AFAC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56CADCE1-B8D8-473D-8545-72C2699DEBAD}
+	EndGlobalSection
+EndGlobal
