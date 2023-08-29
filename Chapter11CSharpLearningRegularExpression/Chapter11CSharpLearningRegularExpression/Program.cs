@@ -23,7 +23,7 @@ namespace Chapter11CSharpLearningRegularExpression
 
             // Excercise
             string text_e = File.ReadAllText("C:\\Users\\pawel\\Documents\\GitHub\\Learning-Csharp\\Chapter11CSharpLearningRegularExpression\\Chapter11CSharpLearningRegularExpression\\TextFile1.txt");
-            string pattern_e = @"\d{1,4}";
+            string pattern_e = @"\d{2,3}";
             Regex regex_e = new Regex(pattern_e);
 
             MatchCollection matchCollection_e = regex_e.Matches(text_e);
