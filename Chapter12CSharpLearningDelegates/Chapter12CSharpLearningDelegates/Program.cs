@@ -36,6 +36,8 @@ namespace Chapter12CSharpLearningDelegates
                 }
             }
 
+            DisplayPeople("exactly 12:", people, p => p.Age == 12);
+
             //=======Filters========
             static bool IsMinor(Person person)
             {
