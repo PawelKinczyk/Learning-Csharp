@@ -1,0 +1,34 @@
+﻿<Window x:Class="Chapter14CSharpLearningWPFToDoListApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chapter14CSharpLearningWPFToDoListApp"
+        mc:Ignorable="d"
+        Title="Ultimate To Do" Height="450" Width="400" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <Button Click="AddToDoButton_Click" Grid.Row="5" Grid.Column="1" Content="Create Todo"/>
+        <TextBox x:Name="ToDoInput"  Grid.Row="3" Grid.Column="1" Background="#FF6D6D6D" Foreground="White"/>
+        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="ToDoList" Background="#FF2D2D2D">
+                
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
