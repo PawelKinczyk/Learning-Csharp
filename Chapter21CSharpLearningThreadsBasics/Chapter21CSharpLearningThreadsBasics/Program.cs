@@ -39,6 +39,13 @@ namespace Chapter21CSharpLearningThreadsBasics
             //    Console.WriteLine("Thread 4");
             //}).Start();
 
+            new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("Thread 4");
+            })
+            { IsBackground = true }.Start();
+            
             Enumerable.Range(0, 100).ToList().ForEach(f =>
             {
                 new Thread(() =>
