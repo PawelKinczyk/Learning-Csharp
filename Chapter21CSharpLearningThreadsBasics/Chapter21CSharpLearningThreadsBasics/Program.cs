@@ -31,11 +31,6 @@ namespace Chapter21CSharpLearningThreadsBasics
                 Console.WriteLine("Thread 3");
             }).Start();
 
-            new Thread(() =>
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine("Thread 4");
-            }).Start();
         }
     }
 }
