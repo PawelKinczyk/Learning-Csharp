@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CodeWarsTraining
 {
@@ -6,7 +12,8 @@ namespace CodeWarsTraining
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(basicOp('*', 3, 5));
+            
+            RepeatStr(2, "lalu");
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -62,6 +69,35 @@ namespace CodeWarsTraining
             {
                 return 0;
             }
+        }
+        //Given a random non-negative number, you have to return the digits of this number within an array in reverse order.
+        public static long[] Digitize(long n)
+        {
+            return n.ToString()
+                    .Reverse()
+                    .Select(t => Convert.ToInt64(t.ToString()))
+                    .ToArray();
+        }
+//Clock shows h hours, m minutes and s seconds after midnight.
+//Your task is to write a function which returns the time since midnight in milliseconds.
+        public static int Past(int h, int m, int s)
+        {
+            return (int)(h * 3.6 * Math.Pow(10, 6) + m * 6 * Math.Pow(10,4) + s * 1000);
+    }
+        //Write a function which converts the input string to uppercase.
+        public static string MakeUpperCase(string str)
+        {
+            return str.ToUpper();
+        }
+        //Write a function that accepts an integer n and a string s as parameters, and returns a string of s repeated exactly n times.
+        public static string RepeatStr(int n, string s)
+        {
+            var ret = new StringBuilder(n * s.Length);
+            for (int i = 0; i < n; i++)
+            {
+                ret.Append(s);
+            }
+            return ret.ToString();
         }
     }
 }
