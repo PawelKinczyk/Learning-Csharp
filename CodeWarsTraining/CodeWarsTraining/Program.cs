@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeWarsTraining
 {
@@ -12,8 +9,10 @@ namespace CodeWarsTraining
     {
         static void Main(string[] args)
         {
-            
-            RepeatStr(2, "lalu");
+
+            //var t = new Xbonacci();
+            //double[] doubles = t.Tribonacci(new double[] { 1, 1, 1 }, 10);
+            Count("Lllaaarrary");
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -99,5 +98,70 @@ namespace CodeWarsTraining
             }
             return ret.ToString();
         }
+
+        //The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+        public static string DuplicateEncode(string word)
+        {
+            var changedWord = new StringBuilder();
+            word = word.ToLower();
+            foreach (char c in word)
+            {
+                if (word.Count(x => x == c) == 1)
+                {
+                    changedWord.Append('(');
+                }
+                else
+                {
+                    changedWord.Append(')');
+                }
+            }
+            Console.WriteLine(changedWord.ToString());
+            return changedWord.ToString();
+        }
+        //        Well met with Fibonacci bigger brother, AKA Tribonacci.
+
+        //As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the sequence to generate the next.And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(
+
+        //So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
+        public class Xbonacci
+        {
+            
+            public double[] Tribonacci(double[] signature, int n)
+            {
+                List<double> result = new List<double>(signature);
+                for (int i = 0; i <= n; i++)
+                {
+                    double newNumber = result.TakeLast(3).Sum();
+                    result.Add(newNumber);
+                    //Console.WriteLine(result.Last());
+
+                }
+                foreach (double number in result) { Console.WriteLine(number); }
+                return result.ToArray();
+            }
+        }
+
+        //There is an array with some numbers.All numbers are equal except for one.Try to find it!
+        //https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/csharp
+        
+        public static int GetUnique(IEnumerable<int> numbers)
+        {
+            return numbers.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).First();
+        }
+        //The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+        //What if the string is empty? Then the result should be empty object literal, {}.
+        public static Dictionary<char, int> Count(string str)
+        {
+            Dictionary<char, int> dict = new Dictionary<char, int>();
+            var counted = str.GroupBy(c => c).Select(g => new {g.Key, Con = g.Count()});
+            foreach ( var c in counted)
+            {
+                Console.WriteLine(c.Key);
+                dict.Add(c.Key, c.Con);
+            }
+
+            return dict;
+        }
+
     }
 }
