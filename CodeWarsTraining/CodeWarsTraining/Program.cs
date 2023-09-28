@@ -1,7 +1,12 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CodeWarsTraining
 {
@@ -12,7 +17,9 @@ namespace CodeWarsTraining
 
             //var t = new Xbonacci();
             //double[] doubles = t.Tribonacci(new double[] { 1, 1, 1 }, 10);
-            Count("Lllaaarrary");
+            //Count("Lllaaarrary");
+            //DuplicateCount("Indivisibilities");
+            Solution(10);
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -159,9 +166,73 @@ namespace CodeWarsTraining
                 Console.WriteLine(c.Key);
                 dict.Add(c.Key, c.Con);
             }
-
             return dict;
         }
 
+        //Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets(both uppercase and lowercase) and numeric digits.
+        public static int DuplicateCount(string str)
+        {
+            str = str.ToLower();
+            int number = 0;
+            foreach (char c in str.Distinct().ToArray())
+            {
+                Console.WriteLine(c);
+
+                if (str.Count(x => x == c) > 1)
+                {
+                    number += 1;
+                }
+                else
+                {
+                }
+            }
+
+            Console.WriteLine(number);
+            return number;
+        }
+        //        If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+        //Finish the solution so that it returns the sum of all the multiples of 3 or 5 below the number passed in.
+
+        //Additionally, if the number is negative, return 0.
+
+        //Note: If the number is a multiple of both 3 and 5, only count it once.
+        public static int Solution(int value)
+        {
+            var numbers = new List<int>();
+            for (int i = 0; i < value; i++)
+            {
+                if (i%3== 0 || i%5==0)
+                {
+                    Console.WriteLine(i);
+                    numbers.Add(i);
+                }
+            }
+            return numbers.Sum();
+        }
+        //Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed(Just like the name of this Kata). Strings passed in will consist of only letters and spaces.Spaces will be included only when more than one word is present.
+        https://www.codewars.com/kata/5264d2b162488dc400000001/train/csharp
+        //TODO 
+            public static string SpinWords(string sentence)
+        {
+            Random random = new Random();
+            string[] str = sentence.Split(' ');
+            List<string> newStr = new List<string>();
+            foreach (string w in str)
+            {
+                int a = random.Next(0, 1);
+                if (a == 0)
+                {
+                    newStr.Add(w.Reverse().ToString());
+
+                }
+                else
+                {
+                    newStr.Add(w);
+                }
+            }
+            string result = string.Join(" ", newStr);
+            return result;
+        }
     }
 }
