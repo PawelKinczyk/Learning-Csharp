@@ -19,7 +19,8 @@ namespace CodeWarsTraining
             //double[] doubles = t.Tribonacci(new double[] { 1, 1, 1 }, 10);
             //Count("Lllaaarrary");
             //DuplicateCount("Indivisibilities");
-            Solution(10);
+            //Solution(10);
+            SpinWords("Hi whats your name");
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -211,7 +212,7 @@ namespace CodeWarsTraining
             return numbers.Sum();
         }
         //Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed(Just like the name of this Kata). Strings passed in will consist of only letters and spaces.Spaces will be included only when more than one word is present.
-        https://www.codewars.com/kata/5264d2b162488dc400000001/train/csharp
+        //https://www.codewars.com/kata/5264d2b162488dc400000001/train/csharp
         //TODO 
             public static string SpinWords(string sentence)
         {
@@ -220,18 +221,23 @@ namespace CodeWarsTraining
             List<string> newStr = new List<string>();
             foreach (string w in str)
             {
-                int a = random.Next(0, 1);
-                if (a == 0)
+                Console.WriteLine(w);
+                int a = random.Next(0, 2);
+                if (w.Length >= 5)
                 {
-                    newStr.Add(w.Reverse().ToString());
-
+                    char[] reverse = w.ToCharArray();
+                    Array.Reverse(reverse);
+                    newStr.Add(new string(reverse));
+                    Console.WriteLine(new string(reverse));
                 }
                 else
                 {
                     newStr.Add(w);
+                    Console.WriteLine(w);
                 }
             }
             string result = string.Join(" ", newStr);
+            Console.WriteLine(result);
             return result;
         }
     }
