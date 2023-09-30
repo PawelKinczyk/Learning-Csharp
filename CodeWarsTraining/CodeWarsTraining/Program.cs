@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.Intrinsics.X86;
@@ -20,7 +21,10 @@ namespace CodeWarsTraining
             //Count("Lllaaarrary");
             //DuplicateCount("Indivisibilities");
             //Solution(10);
-            SpinWords("Hi whats your name");
+            //SpinWords("Hi whats your name");
+            string[] ar1 = { "arp", "live", "strong", "to" };
+            string[] ar2 = { "lively", "alive", "harp", "sharp", "armstrong" };
+            inArray(ar1, ar2); 
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -239,6 +243,54 @@ namespace CodeWarsTraining
             string result = string.Join(" ", newStr);
             Console.WriteLine(result);
             return result;
+        }
+        //        Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+        //Example 1:
+
+        //a1 = ["arp", "live", "strong"]
+
+        //a2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+
+        //returns["arp", "live", "strong"]
+        public static string[] inArray(string[] array1, string[] array2)
+        {
+            List<string> list = new List<string>();
+            foreach (string s in array1)
+            {
+                foreach (string s2 in array2)
+                {
+                    if (s2.Contains(s))
+                    {
+                        Console.WriteLine(s);
+                        list.Add(s);
+                        break;
+                    }
+                }
+            }
+            list.Sort();
+            return list.ToArray();
+        }
+
+//        Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+
+//Examples:
+
+        public static string Encrypt(string text, int n)
+        {
+            foreach (string s in text.Split())
+            {
+                foreach(char c in s)
+                {
+                    ((byte)c) + n;
+
+                }
+            }
+            return text;
+        }
+
+        public static string Decrypt(string encryptedText, int n)
+        {
+            return encryptedText;
         }
     }
 }
