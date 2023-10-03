@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.Intrinsics.X86;
@@ -22,9 +23,10 @@ namespace CodeWarsTraining
             //DuplicateCount("Indivisibilities");
             //Solution(10);
             //SpinWords("Hi whats your name");
-            string[] ar1 = { "arp", "live", "strong", "to" };
-            string[] ar2 = { "lively", "alive", "harp", "sharp", "armstrong" };
-            inArray(ar1, ar2); 
+            //string[] ar1 = { "arp", "live", "strong", "to" };
+            //string[] ar2 = { "lively", "alive", "harp", "sharp", "armstrong" };
+            //inArray(ar1, ar2); 
+            IsPrime(1);
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -271,26 +273,44 @@ namespace CodeWarsTraining
             return list.ToArray();
         }
 
-//        Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+        //        Define a function that takes an integer argument and returns a logical value true or false depending on if the integer is a prime.
 
-//Examples:
+        //Per Wikipedia, a prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+        //Requirements
 
-        public static string Encrypt(string text, int n)
+        //    You can assume you will be given an integer input.
+        //    You can not assume that the integer will be only positive.You may be given negative numbers as well (or 0 ).
+        //    NOTE on performance: There are no fancy optimizations required, but still the most trivial solutions might time out. Numbers go up to 2^31 (or similar, depending on language ). Looping all the way up to n, or n/2, will be too slow.
+        //https://www.codewars.com/kata/5262119038c0985a5b00029f/train/csharp
+        
+        public static bool IsPrime(int n)
         {
-            foreach (string s in text.Split())
+            bool res = true;
+            if (n == 0 || n == 1)
             {
-                foreach(char c in s)
+                res = false;
+            }
+            if (n > 1) {
+                for (int i = 2; i <= Math.Abs(n); i++)
                 {
-                    ((byte)c) + n;
+                    Console.WriteLine(i);
+                    Console.WriteLine(Math.Abs(n));
+                    if (i != Math.Abs(n) && n % i == 0)
+                    {
+
+                        res = false;
+
+
+                        break;
+                    }
 
                 }
-            }
-            return text;
-        }
+            
+                
 
-        public static string Decrypt(string encryptedText, int n)
-        {
-            return encryptedText;
+            }
+            Console.WriteLine(res.ToString());
+            return res;
         }
     }
 }
