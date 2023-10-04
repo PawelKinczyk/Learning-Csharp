@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -26,7 +27,8 @@ namespace CodeWarsTraining
             //string[] ar1 = { "arp", "live", "strong", "to" };
             //string[] ar2 = { "lively", "alive", "harp", "sharp", "armstrong" };
             //inArray(ar1, ar2); 
-            IsPrime(1);
+            //IsPrime(1);
+            FirstNonRepeatingLetter("sdeerTdsy");
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -91,12 +93,12 @@ namespace CodeWarsTraining
                     .Select(t => Convert.ToInt64(t.ToString()))
                     .ToArray();
         }
-//Clock shows h hours, m minutes and s seconds after midnight.
-//Your task is to write a function which returns the time since midnight in milliseconds.
+        //Clock shows h hours, m minutes and s seconds after midnight.
+        //Your task is to write a function which returns the time since midnight in milliseconds.
         public static int Past(int h, int m, int s)
         {
-            return (int)(h * 3.6 * Math.Pow(10, 6) + m * 6 * Math.Pow(10,4) + s * 1000);
-    }
+            return (int)(h * 3.6 * Math.Pow(10, 6) + m * 6 * Math.Pow(10, 4) + s * 1000);
+        }
         //Write a function which converts the input string to uppercase.
         public static string MakeUpperCase(string str)
         {
@@ -139,7 +141,7 @@ namespace CodeWarsTraining
         //So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
         public class Xbonacci
         {
-            
+
             public double[] Tribonacci(double[] signature, int n)
             {
                 List<double> result = new List<double>(signature);
@@ -157,7 +159,7 @@ namespace CodeWarsTraining
 
         //There is an array with some numbers.All numbers are equal except for one.Try to find it!
         //https://www.codewars.com/kata/585d7d5adb20cf33cb000235/train/csharp
-        
+
         public static int GetUnique(IEnumerable<int> numbers)
         {
             return numbers.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).First();
@@ -167,8 +169,8 @@ namespace CodeWarsTraining
         public static Dictionary<char, int> Count(string str)
         {
             Dictionary<char, int> dict = new Dictionary<char, int>();
-            var counted = str.GroupBy(c => c).Select(g => new {g.Key, Con = g.Count()});
-            foreach ( var c in counted)
+            var counted = str.GroupBy(c => c).Select(g => new { g.Key, Con = g.Count() });
+            foreach (var c in counted)
             {
                 Console.WriteLine(c.Key);
                 dict.Add(c.Key, c.Con);
@@ -209,7 +211,7 @@ namespace CodeWarsTraining
             var numbers = new List<int>();
             for (int i = 0; i < value; i++)
             {
-                if (i%3== 0 || i%5==0)
+                if (i % 3 == 0 || i % 5 == 0)
                 {
                     Console.WriteLine(i);
                     numbers.Add(i);
@@ -220,7 +222,7 @@ namespace CodeWarsTraining
         //Write a function that takes in a string of one or more words, and returns the same string, but with all five or more letter words reversed(Just like the name of this Kata). Strings passed in will consist of only letters and spaces.Spaces will be included only when more than one word is present.
         //https://www.codewars.com/kata/5264d2b162488dc400000001/train/csharp
         //TODO 
-            public static string SpinWords(string sentence)
+        public static string SpinWords(string sentence)
         {
             Random random = new Random();
             string[] str = sentence.Split(' ');
@@ -282,16 +284,17 @@ namespace CodeWarsTraining
         //    You can not assume that the integer will be only positive.You may be given negative numbers as well (or 0 ).
         //    NOTE on performance: There are no fancy optimizations required, but still the most trivial solutions might time out. Numbers go up to 2^31 (or similar, depending on language ). Looping all the way up to n, or n/2, will be too slow.
         //https://www.codewars.com/kata/5262119038c0985a5b00029f/train/csharp
-        
+
         public static bool IsPrime(int n)
         {
             bool res = true;
-            if (n == 0 || n == 1)
+            if (n == 0 || n == 1 || n < 0)
             {
                 res = false;
             }
-            if (n > 1) {
-                for (int i = 2; i <= Math.Abs(n); i++)
+            if (n > 1)
+            {
+                for (int i = 2; i <= Math.Sqrt(Math.Abs(n)); i++)
                 {
                     Console.WriteLine(i);
                     Console.WriteLine(Math.Abs(n));
@@ -299,18 +302,31 @@ namespace CodeWarsTraining
                     {
 
                         res = false;
-
-
                         break;
                     }
 
                 }
-            
-                
-
             }
             Console.WriteLine(res.ToString());
             return res;
+        }
+
+        //        Write a function named first_non_repeating_letter that takes a string input, and returns the first character that is not repeated anywhere in the string.
+
+        //For example, if given the input 'stress', the function should return 't', since the letter t only occurs once in the string, and occurs first in the string.
+
+        //As an added challenge, upper- and lowercase letters are considered the same character, but the function should return the correct case for the initial letter.For example, the input 'sTreSS' should return 'T'.
+
+        //If a string contains all repeating characters, it should return an empty string ("") or None -- see sample tests.
+
+        public static string FirstNonRepeatingLetter(string s)
+        {
+            foreach (char c in s.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key))
+            {
+                Console.WriteLine(c);
+            }
+            s.ToLower();
+            return s.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).First().ToString();
         }
     }
 }
