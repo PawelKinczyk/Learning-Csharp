@@ -321,12 +321,21 @@ namespace CodeWarsTraining
 
         public static string FirstNonRepeatingLetter(string s)
         {
-            foreach (char c in s.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key))
+            string p = s;
+            s = s.ToLower();
+            var list = s.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key);
+            foreach (char c in list)
             {
                 Console.WriteLine(c);
             }
-            s.ToLower();
-            return s.GroupBy(x => x).Where(x => x.Count() == 1).Select(x => x.Key).First().ToString();
+            if (list.Count() == 0)
+            {
+                return "";
+            }
+            else
+            {
+            return p[s.IndexOf(list.First())].ToString();
+            }
         }
     }
 }
