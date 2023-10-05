@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +29,9 @@ namespace CodeWarsTraining
             //string[] ar2 = { "lively", "alive", "harp", "sharp", "armstrong" };
             //inArray(ar1, ar2); 
             //IsPrime(1);
-            FirstNonRepeatingLetter("sdeerTdsy");
+            //FirstNonRepeatingLetter("sdeerTdsy");
+            //int a = find_it(new []{ 1,2,4,2,6,2,1,1});
+            DigitalRoot(23455);
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -337,5 +340,72 @@ namespace CodeWarsTraining
             return p[s.IndexOf(list.First())].ToString();
             }
         }
+
+        //        Given an array of integers, find the one that appears an odd number of times.
+
+        //There will always be only one integer that appears an odd number of times.
+        //        Examples
+
+        //[7] should return 7, because it occurs 1 time (which is odd).
+        //[0] should return 0, because it occurs 1 time(which is odd).
+        //[1,1,2] should return 2, because it occurs 1 time(which is odd).
+        //[0,1,0,1,0] should return 0, because it occurs 3 times(which is odd).
+        //[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time(which is odd).
+
+        public static int find_it(int[] seq)
+        {
+
+            foreach (int i in seq)
+            {
+                if (seq.ToList().Count(x => x==i) % 2 == 0)
+                {
+                    int a = 0;
+                    Console.WriteLine(i);
+                    continue;
+                } else
+                {
+                    Console.WriteLine(i);
+                    return i;
+                }
+            }
+            return 0;
+        }
+
+        //        Digital root is the recursive sum of all the digits in a number.
+
+        //Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced.The input will be a non-negative integer.
+
+        public static int DigitalRoot(long n)
+        {
+            // Your awesome code here!
+            List<char> splitLong = n.ToString().ToList();
+            int num = 0;
+
+            foreach (char c in splitLong)
+            {
+                Console.WriteLine(c);
+                
+                int nr = int.Parse(c.ToString());
+                num += nr;
+            }
+            
+
+            while (num.ToString().Length > 1)
+            {
+                splitLong = num.ToString().ToList();
+                num = 0;
+                foreach (char c in splitLong)
+                {
+                    Console.WriteLine(c);
+
+                    int nr = int.Parse(c.ToString());
+                    num += nr;
+                }
+
+            }
+            Console.WriteLine(num);
+            return num;
+        }
+
     }
 }
