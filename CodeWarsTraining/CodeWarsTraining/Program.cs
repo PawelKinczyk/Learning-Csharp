@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Runtime.Intrinsics.Arm;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Text;
@@ -31,7 +32,8 @@ namespace CodeWarsTraining
             //IsPrime(1);
             //FirstNonRepeatingLetter("sdeerTdsy");
             //int a = find_it(new []{ 1,2,4,2,6,2,1,1});
-            DigitalRoot(23455);
+            //DigitalRoot(23455);
+            ArrayDiff(new int[] { }, new int[] { 1, 2 });
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -401,11 +403,63 @@ namespace CodeWarsTraining
                     int nr = int.Parse(c.ToString());
                     num += nr;
                 }
-
             }
             Console.WriteLine(num);
             return num;
         }
+//        You probably know the "like" system from Facebook and other pages.People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
 
+//Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+
+        public static string Likes(string[] name)
+        {
+            if (name.Length == 0)
+            {
+                return "no one likes this";
+            }
+            else if (name.Length == 1) {
+                return $"{name[0]} likes this";
+            }
+            else if (name.Length == 2) {
+                return $"{name[0]} and {name[1]} like this";
+            }
+            else if (name.Length == 3)
+            {
+                return $"{name[0]}, {name[1]} and {name[2]} like this";
+            }
+            else {
+                return $"{name[0]}, {name[1]} and {name.Length-2} others like this";
+            }
+        }
+
+        //        Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+        //It should remove all values from list a, which are present in list b keeping their order.
+        //https://www.codewars.com/kata/523f5d21c841566fde000009/train/csharp
+        
+        public static int[] ArrayDiff(int[] a, int[] b)
+        {
+            // Your brilliant solution goes here
+            // It's possible to pass random tests in about a second ;)
+            List<int> aList = a.ToList();
+            List<int> bList = b.ToList();
+            foreach (int i in bList)
+            {
+                for (int x = 0; x<= aList.Count(x => x == i) ; x++)
+                {
+                    aList.RemoveAt(aList.IndexOf(i));
+                }
+                
+            }
+            int[] res = aList.ToArray();
+            if (res != null) {
+                return res;
+            }
+            else
+            {
+                return new int[] { };
+            }
+            
+        }
     }
 }
