@@ -459,7 +459,15 @@ namespace CodeWarsTraining
             {
                 return new int[] { };
             }
-            
+
+        }
+
+        
+        public static string CreatePhoneNumber(int[] numbers)
+        {
+            return $"({numbers.GetValue(0)}{numbers.GetValue(1)}{numbers.GetValue(2)}) {numbers.GetValue(3)}{numbers.GetValue(4)}{numbers.GetValue(5)}-{numbers.GetValue(6)}{numbers.GetValue(7)}{numbers.GetValue(8)}{numbers.GetValue(9)}";
         }
     }
+
+
 }
