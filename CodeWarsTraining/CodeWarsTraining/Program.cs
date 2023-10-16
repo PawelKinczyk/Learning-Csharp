@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -33,7 +34,9 @@ namespace CodeWarsTraining
             //FirstNonRepeatingLetter("sdeerTdsy");
             //int a = find_it(new []{ 1,2,4,2,6,2,1,1});
             //DigitalRoot(23455);
-            ArrayDiff(new int[] { }, new int[] { 1, 2 });
+            //ArrayDiff(new int[] { }, new int[] { 1, 2 });
+            KataCountBits.CountBits(4);
+
         }
         public static string AreYouPlayingBanjo(string name)
         {
@@ -339,7 +342,7 @@ namespace CodeWarsTraining
             }
             else
             {
-            return p[s.IndexOf(list.First())].ToString();
+                return p[s.IndexOf(list.First())].ToString();
             }
         }
 
@@ -359,7 +362,7 @@ namespace CodeWarsTraining
 
             foreach (int i in seq)
             {
-                if (seq.ToList().Count(x => x==i) % 2 == 0)
+                if (seq.ToList().Count(x => x == i) % 2 == 0)
                 {
                     int a = 0;
                     Console.WriteLine(i);
@@ -386,11 +389,11 @@ namespace CodeWarsTraining
             foreach (char c in splitLong)
             {
                 Console.WriteLine(c);
-                
+
                 int nr = int.Parse(c.ToString());
                 num += nr;
             }
-            
+
 
             while (num.ToString().Length > 1)
             {
@@ -407,9 +410,9 @@ namespace CodeWarsTraining
             Console.WriteLine(num);
             return num;
         }
-//        You probably know the "like" system from Facebook and other pages.People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+        //        You probably know the "like" system from Facebook and other pages.People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
 
-//Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+        //Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
 
         public static string Likes(string[] name)
         {
@@ -428,7 +431,7 @@ namespace CodeWarsTraining
                 return $"{name[0]}, {name[1]} and {name[2]} like this";
             }
             else {
-                return $"{name[0]}, {name[1]} and {name.Length-2} others like this";
+                return $"{name[0]}, {name[1]} and {name.Length - 2} others like this";
             }
         }
 
@@ -436,7 +439,7 @@ namespace CodeWarsTraining
 
         //It should remove all values from list a, which are present in list b keeping their order.
         //https://www.codewars.com/kata/523f5d21c841566fde000009/train/csharp
-        
+
         public static int[] ArrayDiff(int[] a, int[] b)
         {
             // Your brilliant solution goes here
@@ -445,11 +448,11 @@ namespace CodeWarsTraining
             List<int> bList = b.ToList();
             foreach (int i in bList)
             {
-                for (int x = 0; x<= aList.Count(x => x == i) ; x++)
+                for (int x = 0; x <= aList.Count(x => x == i); x++)
                 {
                     aList.RemoveAt(aList.IndexOf(i));
                 }
-                
+
             }
             int[] res = aList.ToArray();
             if (res != null) {
@@ -462,12 +465,30 @@ namespace CodeWarsTraining
 
         }
 
-        
+
         public static string CreatePhoneNumber(int[] numbers)
         {
             return $"({numbers.GetValue(0)}{numbers.GetValue(1)}{numbers.GetValue(2)}) {numbers.GetValue(3)}{numbers.GetValue(4)}{numbers.GetValue(5)}-{numbers.GetValue(6)}{numbers.GetValue(7)}{numbers.GetValue(8)}{numbers.GetValue(9)}";
         }
     }
+    //Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number.You can guarantee that input is non-negative.
 
+    //Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
+
+    public class KataCountBits
+    {
+        public static int CountBits(int n)
+        {
+            BitArray bits = new BitArray(new int[] { n });
+            int sum = 0;
+            foreach (bool b in bits)
+            {
+                //Console.WriteLine(b);
+                if (b == true) { sum += 1; }
+
+            }
+            return sum;
+        }
+    }
 
 }
